@@ -139,11 +139,13 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="DXGI.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DXGI.cpp" />
     <ClCompile Include="entory.cpp" />
