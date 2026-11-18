@@ -53,7 +53,6 @@ HRESULT Window::create(HINSTANCE hInstance,std::string_view name, int width, int
 bool Window::massageloop() noexcept
 {
 	MSG msg{};
-
 	while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 	{
 		if (msg.message == WM_QUIT)
@@ -63,8 +62,8 @@ bool Window::massageloop() noexcept
 
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
-		return true;
 	}
+	return true;
 }
 
 HWND Window::handle() const noexcept
