@@ -19,7 +19,7 @@ public:
 	[[nodiscard]] IDXGIAdapter1* GetAdapter()const noexcept;
 
 private:
-	IDXGIFactory4* factory = nullptr;
-	IDXGIAdapter1* adapter = nullptr;
+	IDXGIFactory4* factory_{};
+	IDXGIAdapter1* adapter_{};
 };
 

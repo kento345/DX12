@@ -8,7 +8,7 @@ class Device final
 public:
     Device() = default;
 	
-	~Device() = default;
+	~Device();
 
 public:
 	[[nodiscard]] bool create(const DXGI& dxgi)noexcept;
@@ -16,6 +16,6 @@ public:
 	[[nodiscard]] ID3D12Device* get()const noexcept;
 private:
 	
-	ID3D12Device* device = nullptr;
+	ID3D12Device* device_{};
 };
 
