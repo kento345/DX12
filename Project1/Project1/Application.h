@@ -15,7 +15,7 @@ public:
 	~Application() = default;
     
 public:
-	[[nodiscard]] HRESULT initialize(HINSTANCE instance)noexcept;
+	[[nodiscard]] bool initialize(HINSTANCE instance)noexcept;
 
 	void loop()noexcept;
 

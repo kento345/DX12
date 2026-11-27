@@ -1,8 +1,15 @@
 #include "Application.h"
+#include<cassert>
 
-HRESULT Application::initialize(HINSTANCE instance) noexcept
+bool Application::initialize(HINSTANCE instance) noexcept
 {
-    return windoInstance_.create(instance, APP_NAME, 1280, 720);
+	if (S_OK != windoInstance_.create(instance, "MyApp", 1280, 720)) {
+		assert(false && "ウィンドwの作成に失敗");
+		return false;
+	}
+
+
+	return true;
 }
 
 void Application::loop() noexcept

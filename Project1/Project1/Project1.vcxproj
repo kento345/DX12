@@ -143,8 +143,12 @@
     <ClInclude Include="Command_Allocator.h" />
     <ClInclude Include="Command_List.h" />
     <ClInclude Include="Command_Queue.h" />
+    <ClInclude Include="Descriptor_Heap.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="DXGI.h" />
+    <ClInclude Include="Fence.h" />
+    <ClInclude Include="Render_Target.h" />
+    <ClInclude Include="Swap_Chain.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +156,13 @@
     <ClCompile Include="Command_Allocator.cpp" />
     <ClCompile Include="Command_List.cpp" />
     <ClCompile Include="Command_Queue.cpp" />
+    <ClCompile Include="Descriptor_Heap.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DXGI.cpp" />
     <ClCompile Include="entory.cpp" />
+    <ClCompile Include="Fence.cpp" />
+    <ClCompile Include="Render_Target.cpp" />
+    <ClCompile Include="Swap_Chain.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
