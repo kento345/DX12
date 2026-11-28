@@ -12,7 +12,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // アプリケーションクラスのインスタンスを生成
     Application app;
 
-    if (app.initialize(hInstance)) {
+    if (!app.initialize(hInstance)) {
         assert(false && "ウィンドウの初期化に失敗しました");
     }
 

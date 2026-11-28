@@ -1,4 +1,5 @@
 #include "Window.h"
+#include<iostream>
 
 
 
@@ -8,11 +9,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)no
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
-	case WM_PAINT:
-
-		return 0;
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE) {
+
 			DestroyWindow(hwnd);
 		}
 		return 0;
@@ -28,7 +27,6 @@ HRESULT Window::create(HINSTANCE hInstance,std::string_view name, int width, int
     wc.lpfnWndProc = WindowProc;
 	wc.hInstance = hInstance;
 	wc.lpszClassName = name.data();
-	wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 
 	RegisterClass(&wc);
