@@ -25,7 +25,7 @@ ID3D12Device* Device::get() const noexcept
 {
 	if (!device_) {
 		assert(FALSE && "デバイスが未作成");
-		return false;
+		return nullptr;
 	}
 	return device_;
 }

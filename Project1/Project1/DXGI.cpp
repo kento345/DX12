@@ -1,6 +1,7 @@
 ﻿#include "DXGI.h"
-
 #include<cassert>
+
+#pragma comment(lib,"dxgi.lib")
 
 DXGI::~DXGI()
 {
@@ -16,7 +17,7 @@ DXGI::~DXGI()
 
 bool DXGI::setDisplayAdapter() noexcept
 {
-#if defined(_DEBUG)
+#if _DEBUG
 	ID3D12Debug* debug;
 
 	if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debug)))) {
@@ -32,7 +33,6 @@ bool DXGI::setDisplayAdapter() noexcept
 #endif //  _DEBUG
 		const auto hr = CreateDXGIFactory2(createFactoryFlags, IID_PPV_ARGS(&factory_));
 		if (FAILED(hr)) {
-			OutputDebugStringA("Failed to create DXGI Factory\n");
 			assert(false && "DXGIファクトリーの作成に失敗");
 			return false;
 		}
@@ -43,23 +43,28 @@ bool DXGI::setDisplayAdapter() noexcept
 		IDXGIAdapter1* dxgiAdapter{};
 
 		//適切なアダプターを選ぶ
-		while (factory_->EnumAdapters1(select,&adapter_) != DXGI_ERROR_NOT_FOUND) {
+		while (factory_->EnumAdapters1(select,&dxgiAdapter) != DXGI_ERROR_NOT_FOUND) {
 			DXGI_ADAPTER_DESC1 desc{};
-			adapter_->GetDesc1(&desc);
+			dxgiAdapter->GetDesc1(&desc);
 
 			select++;
 
 			if (desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) {
-				adapter_->Release();
+				dxgiAdapter->Release();
 				continue;
 			}
 
-			if (FAILED(D3D12CreateDevice(adapter_, D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr))) {
-				adapter_->Release();
+			if (FAILED(D3D12CreateDevice(dxgiAdapter, D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr))) {
+				dxgiAdapter->Release();
 				continue;
 			}
 			adapter_ = dxgiAdapter;
 			break;
+		}
+
+		if (!adapter_) {
+			assert(false && "アダプタの取得に失敗");
+			return false;
 		}
 	}
 
@@ -70,7 +75,6 @@ IDXGIFactory4* DXGI::GetFactory() const noexcept
 { 
 	if (!factory_)
 	{
-		OutputDebugStringA("DXGI Factory is not created\n");
 		assert(false && "DXGIファクトリが未作成です");
 		return nullptr;
 	}
@@ -82,7 +86,6 @@ IDXGIAdapter1* DXGI::GetAdapter() const noexcept
 {
 	if (!adapter_)
 	{
-		OutputDebugStringA("DXGI Adapter is not created\n");
 		assert(false && "ディスプレイアダプターが未作成です");
 		return nullptr;
 	}

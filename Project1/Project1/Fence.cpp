@@ -14,13 +14,13 @@ bool Fence::create(const Device & device) noexcept
 {
 	auto hr = device.get()->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence_));
 	if (FAILED(hr)) {
-		assert(false && "フェンスの作成に失敗");
+		assert(false && "フェンスの作成に失敗 ");
 		return false;
 	}
 
 	waitGpuEvent_ = CreateEvent(nullptr, false, false, "WAIT_GPU");
 	if (!waitGpuEvent_) {
-		assert(false && "GPU同期用のイベントハンドルの作成に失敗");
+		assert(false && "GPU同期用のイベントハンドルの作成に失敗 ");
 		return false;
 	}
 

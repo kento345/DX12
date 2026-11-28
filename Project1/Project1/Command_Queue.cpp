@@ -19,7 +19,7 @@ bool Command_Queue::create(const Device& device) noexcept
 
 	const auto hr = device.get()->CreateCommandQueue(&desc, IID_PPV_ARGS(&commandQueue_));
 	if (FAILED(hr)) {
-		assert(false && "コマンドキューの作成に失敗");
+		assert(false && "コマンドキューの作成に失敗 ");
 		return false;
 	}
 

@@ -20,7 +20,7 @@ bool Descriptor_Heap::create(const Device& device, D3D12_DESCRIPTOR_HEAP_TYPE ty
 
     auto hr = device.get()->CreateDescriptorHeap(&heapDesc, IID_PPV_ARGS(&descriptorHeap_));
     if (FAILED(hr)) {
-        assert(false && "ディスクリプタヒープの作成に失敗");
+        assert(false && "ディスクリプタヒープの作成に失敗 ");
         return false;
     }
 
@@ -39,7 +39,7 @@ ID3D12DescriptorHeap* Descriptor_Heap::get() const noexcept
 D3D12_DESCRIPTOR_HEAP_TYPE Descriptor_Heap::getType() const noexcept
 {
     if (!type_) {
-        assert(false && "ディスクリプタヒープのタイプが未設定");
+        assert(false && "ディスクリプタヒープのタイプが未設定 ");
     }
     return type_;
 }

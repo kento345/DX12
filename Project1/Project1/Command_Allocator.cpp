@@ -15,7 +15,7 @@ bool Command_Allocator::create(const Device& device, const D3D12_COMMAND_LIST_TY
 
     const auto hr = device.get()->CreateCommandAllocator(type_, IID_PPV_ARGS(&commandAllocator_));
     if (FAILED(hr)) {
-        assert(false && "コマンドアロケータの作成に失敗");
+        assert(false && "コマンドアロケータの作成に失敗 ");
         return false;
     }
 
@@ -44,7 +44,7 @@ ID3D12CommandAllocator* Command_Allocator::get() const noexcept
 D3D12_COMMAND_LIST_TYPE Command_Allocator::getType() const noexcept
 {
     if (!commandAllocator_) {
-        assert(false && "コマンドリストのタイプが未設定");
+        assert(false && "コマンドリストのタイプが未設定 ");
     }
     return type_;
 }

@@ -27,7 +27,7 @@ bool Render_Target::createBackBuffer(const Device & device, const Swap_Chain & s
 	for (uint8_t i = 0;i < desc.BufferCount;i++) {
 		const auto hr = swapChain.get()->GetBuffer(i, IID_PPV_ARGS(&renderTargets_[i]));
 		if (FAILED(hr)) {
-			assert(false && "バックバッファの取得に失敗");
+			assert(false && "バックバッファの取得に失敗 ");
 			return false;
 		}
 
@@ -41,7 +41,7 @@ bool Render_Target::createBackBuffer(const Device & device, const Swap_Chain & s
 D3D12_CPU_DESCRIPTOR_HANDLE Render_Target::getDescriptorHandle(const Device& device, const Descriptor_Heap& heap, UINT index) const noexcept
 {
 	if (index >= renderTargets_.size() || !renderTargets_[index]) {
-		assert(false && "不要なレンダーターゲットです");
+		assert(false && "不要なレンダーターゲットです ");
 	}
 	auto handle = heap.get()->GetCPUDescriptorHandleForHeapStart();
 

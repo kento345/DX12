@@ -26,7 +26,7 @@ bool Swap_Chain::create(const DXGI& dxgi, const Window& window, const Command_Qu
 	{
 		const auto hr = dxgi.GetFactory()->CreateSwapChainForHwnd(commandQueue.get(), window.handle(), &swapChainDesc_, nullptr, nullptr, &tempSwapChin);
 		if (FAILED(hr)) {
-			assert(false && "スワップチェインの作成に失敗");
+			assert(false && "スワップチェインの作成に失敗 ");
 			return false;
 		}
 	}
@@ -36,7 +36,7 @@ bool Swap_Chain::create(const DXGI& dxgi, const Window& window, const Command_Qu
 		tempSwapChin->Release();
 
 		if (FAILED(hr)) {
-			assert(false && "スワップチェインのアップグレードに失敗");
+			assert(false && "スワップチェインのアップグレードに失敗 ");
 			return false;
 		}
 	}

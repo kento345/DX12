@@ -14,7 +14,7 @@ bool Command_List::create(const Device& device, const Command_Allocator& command
     const auto hr = device.get()->CreateCommandList(0, commandAllocator.getType(),commandAllocator.get(),nullptr, IID_PPV_ARGS(&commandList_));
 
     if (FAILED(hr)) {
-        assert(false && "コマンドリストの作成に失敗");
+        assert(false && "コマンドリストの作成に失敗 ");
         return false;
     }
 
